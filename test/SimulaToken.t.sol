@@ -26,7 +26,7 @@ contract TestSimulaToken is Test {
     }
 
     function testMint() public {
-        token.mint(msg.sender,1e18);
+        token.mint{value: 10000}(address(1),1e18);
         assertEq(token.totalSupply(), 101000000000000000000);
     }
     

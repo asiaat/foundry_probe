@@ -11,7 +11,8 @@ contract SimulaToken is Ownable, ERC20Pausable {
         _mint(msg.sender, 100 * 10 ** decimals());
     }
 
-    function mint(address to, uint256 amount) public  {
+    function mint(address to, uint256 amount) public  payable{
+        require(msg.value == 10000);
         _mint(to, amount);
     }
 }
