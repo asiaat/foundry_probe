@@ -2,22 +2,32 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
+import "src/SimulaToken.sol";
 
-import "src/Contract.sol";
-
-contract TestContract is Test {
-    Contract c;
+contract TestSimulaToken is Test {
+    SimulaToken token;
 
     function setUp() public {
-        c = new Contract();
+        token = new SimulaToken();
     }
 
-    function testBar() public {
-        assertEq(uint256(1), uint256(1), "ok");
+    function testName() public {
+        assertEq(token.name(), "SimulaToken", "ok");
     }
 
-    function testFoo(uint256 x) public {
-        vm.assume(x < type(uint128).max);
-        assertEq(x + x, x * 2);
+    function testSymbol() public {
+        assertEq(token.symbol(), "SML", "ok");
     }
+
+    
+    function testTotalSupply() public {
+        
+        assertEq(token.totalSupply(), 100000000000000000000);
+    }
+
+    function testMint() public {
+        token.mint(msg.sender,1e18);
+        assertEq(token.totalSupply(), 101000000000000000000);
+    }
+    
 }
