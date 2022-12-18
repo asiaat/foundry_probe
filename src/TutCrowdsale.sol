@@ -15,7 +15,7 @@ contract TutCrowdsale {
   SimulaToken public token;
 
   // Address where funds are collected
-  address  payable public wallet;
+  address   public wallet;
 
   // How many token units a buyer gets per wei
   uint256 public rate;
@@ -60,7 +60,7 @@ contract TutCrowdsale {
    */
   constructor(
         uint256 _rate, 
-        address payable _wallet, 
+        address  _wallet, 
         SimulaToken _token, 
         uint256 _cap,
         uint256 _openingTime,
@@ -287,6 +287,6 @@ contract TutCrowdsale {
    * @dev Determines how ETH is stored/forwarded on purchases.
    */
   function _forwardFunds() internal {
-    wallet.transfer(msg.value);
+    payable(wallet).transfer(msg.value);
   }
 }
