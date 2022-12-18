@@ -25,9 +25,21 @@ contract TestSimulaToken is Test {
         assertEq(token.totalSupply(), 100000000000000000000);
     }
 
+    uint256 amount      = 10000;
+    uint256 maxAmount   = 49999;
     function testMint() public {
-        token.mint{value: 10000}(address(1),1e18);
+        token.mint{value: amount}(address(1),1e18);
         assertEq(token.totalSupply(), 101000000000000000000);
+
+        token.mint{value: maxAmount}(address(1),1e18);
+        assertEq(token.totalSupply(), 102000000000000000000);
+
+        // TODO howto caths the request error
+        //token.mint{value: 1000000}(address(1),1e18);
+        //assertEq(token.totalSupply(), 102000000000000000000);
+
+        //token.mint{value: 70000}(address(1),1e18);
+        //assertEq(token.totalSupply(), 101000000000000000000);
     }
     
 }
