@@ -38,8 +38,6 @@ contract TestSimulaToken is Test {
         //token.mint{value: 1000000}(address(1),1e18);
         //assertEq(token.totalSupply(), 102000000000000000000);
 
-        //token.mint{value: 70000}(address(1),1e18);
-        //assertEq(token.totalSupply(), 101000000000000000000);
     }
     
 }

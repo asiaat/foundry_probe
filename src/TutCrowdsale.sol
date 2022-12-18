@@ -15,7 +15,7 @@ contract TutCrowdsale {
   SimulaToken public token;
 
   // Address where funds are collected
-  address payable public wallet;
+  address  payable public wallet;
 
   // How many token units a buyer gets per wei
   uint256 public rate;
